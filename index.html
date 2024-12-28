@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Arijit Kumar Roy - Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/d193bceb68.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="header">
+            <div class="container">
+                <nav>
+                    <img src="assets/logo.png" class="logo"/>
+                    <ul id="sidemenu">
+                        <li><a href="#header">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Works</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <i class="fas fa-times" onclick="closeMenu()"></i>
+                    </ul>
+                    <i class="fas fa-bars" onclick="openMenu()"></i>
+                </nav>
+                <div class="header-text">
+                    <p>Passionate Coder</p>
+                    <h1>Hey there, I'm <span>Arijit</span><br/>Kumar Roy from India</h1>
+                </div>
+            </div>
+        </div>
+        <div id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="about-col-1">
+                        <img src="assets/profile2.jpeg" alt=""/>
+                    </div>
+                    <div class="about-col-2">
+                        <h1 class="sub-title">About Me</h1>
+                        <p>Enthusiastic in the field of Computer Science, likes to explore the vast world of Techs. Always ready to march ahead grabbing opportunities, learning from past mistakes and improving myself everyday. Highly adaptive and a friendly fellow.</p>
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="openTab('skills')">Skills</p>
+                            <p class="tab-links" onclick="openTab('education')">Education</p>
+                            <p class="tab-links" onclick="openTab('experience')">Experience</p>
+                        </div>
+                        <div class="tab-contents active-tab" id="skills">
+                            <ul>
+                                <li><span>Python</span><br/>Programming Language for competitive coding</li>
+                                <li><span>Java</span><br/>Programming Language for developing apps</li>
+                                <li><span>MySQL</span><br/>Designing Relational database system</li>
+                                <li><span>HTML5/CSS3</span><br/>Frontend Designing for websites</li>
+                                <li><span>NodeJS/Express</span><br/>Backend Programming for web servers</li>
+                                <li><span>Blender</span><br/>Software for 3D modelling, shading and animation</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="education">
+                            <ul>
+                                <li><span>2023-27</span><br/>B.Tech in Computer Science and Engineering at MCKVIE, Liluah</li>
+                                <li><span>2021-23</span><br/>CBSE Class 10+2 at Aditya Academy Secondary, Barasat</li>
+                                <li><span>2019-2021</span><br/>CBSE Class 10 at Aditya Academy Secondary, Dum Dum</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="experience">
+                            <ul>
+                                <li><span>None</span><br/>Finding the path to excellence</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="services">
+            <div class="container">
+                <h1 class="sub-title">My Services</h1>
+                <div class="services-list">
+                    <div>
+                        <i class="fas fa-code"></i>
+                        <h2>Webpage Designing</h2>
+                        <p>Designing interactive web pages using React.js as frontend and NodeJS as backend</p>
+                        <a href="#">Learn More</a>
+                    </div>
+                    <div>
+                        <i class="fab fa-app-store"></i>
+                        <h2>App Development</h2>
+                        <p>Creating functional mobile applications using Android Studio and Java</p>
+                        <a href="#">Learn More</a>
+                    </div>
+                    <div>
+                        <i class="fab fa-unity"></i>
+                        <h2>3D Modelling</h2>
+                        <p>Making real life structures and artifacts in a 3D modelling software like Blender</p>
+                        <a href="#">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="portfolio">
+            <div class="container">
+                <h1 class="sub-title">My Work</h1>
+                <div class="work-list">
+                    <div class="work">
+                        <img src="assets/iris.jpg" alt="">
+                        <div class="layer">
+                            <h3>Iris Classification WebApp</h3>
+                            <p>The popular Iris Classification ML project implemented on a webpage with React.js (frontend) and Python Flask (backend)</p>
+                            <a href="https://github.com/arijitkroy/iris-classification-webapp"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="work">
+                        <img src="assets/min_ai.jpg" alt="">
+                        <div class="layer">
+                            <h3>Minimalistic AI WebApp</h3>
+                            <p>Web App built with React.js and Google Gemini API (2.0 Flash Experimental)</p>
+                            <a href="https://github.com/arijitkroy/Minimalistic-AI"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="work">
+                        <img src="assets/kodikas.png" alt="">
+                        <div class="layer">
+                            <h3>Kodikas2k24 Webpage Design</h3>
+                            <p>A website for our college's intra-coding competition that was held on September 2024</p>
+                            <a href="https://kodikas2k24.vercel.app"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="btn">See more</a>
+            </div>
+        </div>
+        <div id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="contact-left">
+                        <h1 class="sub-title">Contact Me</h1>
+                        <p><i class="fas fa-paper-plane"></i>arijitkroy16@gmail.com</p>
+                        <p><i class="fas fa-phone-square-alt"></i>+917044705600</p>
+                        <div class="social-icons">
+                            <a href="https://github.com/arijitkroy"><i class="fab fa-square-github"></i></a>
+                            <a href="https://www.youtube.com/channel/UCyv1kJjLdJ7pak9jBtLSXoQ"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.instagram.com/arijit_k_r0y/"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/arijitkumarroy/"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                        <a href="assets/My Resume.pdf" download class="btn btn2">Download Resume</a>
+                    </div>
+                    <div class="contact-right">
+                        <form name="form-upload">
+                            <input type="text" name="Name" placeholder="Your Name" required>
+                            <input type="email" name="Email" placeholder="Your Email" required>
+                            <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                            <button type="submit" class="btn btn2">Submit</button>
+                        </form>
+                        <span id="msg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Copyright ©️ Arijit</p>
+            </div>
+        </div>
+        <script lang="text/javascript">
+            let tablinks = document.getElementsByClassName("tab-links");
+            let tabcontents = document.getElementsByClassName("tab-contents");
+            function openTab(tabName) {
+                for (tablink of tablinks) {
+                    tablink.classList.remove("active-link");
+                }
+                for (tabcontent of tabcontents) {
+                    tabcontent.classList.remove("active-tab");
+                }
+                event.currentTarget.classList.add("active-link");
+                document.getElementById(tabName).classList.add("active-tab");
+            }
+
+            let sidemenu = document.getElementById("sidemenu");
+            function openMenu() {
+                sidemenu.style.right = "0";
+            }
+            function closeMenu() {
+                sidemenu.style.right = "-200px";
+            }
+
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwRiw0I1A_7w3cWp-BH9hM2a9yeGTsw8nSixAr589b4XXT9G_skyb0Z1JwdCSwQ0_Sn/exec'
+            const form = document.forms['form-upload']
+            const msg = document.getElementById("msg");
+            form.addEventListener('submit', e => {
+                e.preventDefault()
+                fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    msg.innerHTML = "Message sent successfully";
+                    setTimeout(function() {
+                        msg.innerHTML = ""
+                    }, 5000)
+                    form.reset();
+                })
+                .catch(error => console.error('Error!', error.message))
+            });
+        </script>
+    </body>
+</html>
