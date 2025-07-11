@@ -11,7 +11,7 @@ export default function Navbar() {
     document.body.style.overflow = menuOpen ? "hidden" : "auto"
   }, [menuOpen])
 
-  const navLinks = ["About", "Services", "Works", "Achievements", "Contact"]
+  const navLinks = ["About", "Works", "Services", "Achievements", "Contact"]
 
   const underlineClasses = `
     relative transition-colors duration-200 hover:text-red-400
