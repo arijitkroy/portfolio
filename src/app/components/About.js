@@ -29,7 +29,7 @@ export default function About() {
     <section id="about" className="py-20 text-white scroll-mt-24 pt-12">
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
         {/* Left Side – Profile Image */}
-        <div className="w-full h-full flex justify-center items-start">
+        <div className="w-full h-full flex justify-center items-start z-50">
           <Image
             src="/assets/profile2.jpeg"
             alt="profile"
