@@ -1,6 +1,8 @@
+"use client"
 import Image from "next/image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons"
+import { useState } from "react"
 
 const works = [
   {
@@ -24,6 +26,15 @@ const works = [
 ]
 
 export default function Projects() {
+  const [activeIndex, setActiveIndex] = useState(null)
+
+  const handleMobileToggle = (i) => {
+  const isMobile = window.innerWidth < 768
+    if (!isMobile) return
+
+    setActiveIndex((prev) => (prev === i ? null : i))
+  }
+
   return (
     <section id="works" className="py-20 scroll-mt-24 pt-12 text-white">
       <div className="max-w-6xl mx-auto px-6">
@@ -31,15 +42,24 @@ export default function Projects() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {works.map((w, i) => (
-            <div key={i} className="relative group overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div
+              key={i}
+              className="relative group overflow-hidden border-2 border-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+              onClick={() => handleMobileToggle(i)}
+            >
               <Image
                 src={w.image}
                 alt={w.title}
                 width={400}
                 height={200}
-                className="w-full h-60 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-60 object-contain transform group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-black/80 text-white flex flex-col justify-center items-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+
+              <div className={`absolute inset-0 bg-black/80 text-white flex flex-col justify-center items-center p-4
+                transition-opacity duration-300
+                ${activeIndex === i ? "opacity-100" : "opacity-0"} 
+                md:opacity-0 md:group-hover:opacity-100`}
+              >
                 <h3 className="text-xl font-semibold mb-2">{w.title}</h3>
                 <p className="text-sm mb-4 text-center">{w.desc}</p>
                 <a

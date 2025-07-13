@@ -19,11 +19,11 @@ export default function Achievements() {
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl font-bold mb-10 text-red-400">My Achievements</h2>
 
-        <div className="space-y-6">
+        <div className="space-y-6 ">
           {achievements.map((ach, idx) => (
             <div
               key={idx}
-              className="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-lg transition"
+              className="bg-gray-900 border-2 border-white p-6 rounded-lg shadow-md hover:shadow-lg transition"
             >
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-xl font-semibold">{ach.title}</h3>

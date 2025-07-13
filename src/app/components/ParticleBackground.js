@@ -38,7 +38,7 @@ export default function ParticleBackground() {
 
         particles.forEach(p => {
         const alpha = 1 - p.life / p.maxLife;
-        ctx.globalAlpha = alpha * 0.4; // overall lower opacity
+        ctx.globalAlpha = alpha * 0.4;
 
         ctx.beginPath();
         ctx.fillStyle = p.color;
@@ -69,11 +69,9 @@ export default function ParticleBackground() {
         p.y += p.speedY;
         p.life++;
 
-        // bounce off edges
         if (p.x < 0 || p.x > width) p.speedX *= -1;
         if (p.y < 0 || p.y > height) p.speedY *= -1;
 
-        // repulse from mouse
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
@@ -86,7 +84,6 @@ export default function ParticleBackground() {
             p.y -= repulseY;
         }
 
-        // reset particle after life ends
         if (p.life > p.maxLife) {
             particles[i] = {
             ...p,

@@ -22,14 +22,11 @@ export default function Navbar() {
   `
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-transparent backdrop-blur-md z-50 shadow-md">
+    <nav className="fixed top-0 left-0 w-full bg-transparent backdrop-blur-md z-600 shadow-md">
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
         <a href="#home">
           <Image src="/assets/logo.png" width={120} height={40} alt="logo" className="cursor-pointer" />
         </a>
-
-        {/* Desktop Nav */}
         <ul className="hidden md:flex gap-8 items-center">
           {navLinks.map(link => (
             <li key={link}>
@@ -39,14 +36,11 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-
-        {/* Mobile Toggle Button */}
         <button onClick={() => setMenuOpen(true)} className="md:hidden text-white text-2xl">
           <FontAwesomeIcon icon={faBars} />
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
       <div
         className={`fixed top-0 left-0 w-full h-screen bg-black text-white z-[9990] overflow-hidden transition-transform duration-300 transform ${
           menuOpen ? "translate-x-0" : "-translate-x-full"

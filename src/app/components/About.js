@@ -7,13 +7,13 @@ const tabData = {
   skills: [
     { title: "Python", desc: "Programming Language for competitive coding" },
     { title: "Java", desc: "Programming Language for developing apps" },
-    { title: "MySQL", desc: "Designing Relational database system" },
-    { title: "HTML5/CSS3", desc: "Frontend Designing for websites" },
+    { title: "MongoDB/Firebase", desc: "NoSQL DBMS for seamless storage of datas" },
+    { title: "React.js/Next.js", desc: "Frameworks for frontend designing of websites" },
     { title: "NodeJS/Express", desc: "Backend Programming for web servers" },
     { title: "Blender", desc: "Software for 3D modelling, shading and animation" }
   ],
   education: [
-    { title: "2023–27", desc: "B.Tech in CSE at MCKVIE, Liluah" },
+    { title: "2023–27", desc: "B.Tech in Computer Science and Engineering at MCKVIE, Liluah, Howrah" },
     { title: "2021–23", desc: "CBSE Class 10+2 at Aditya Academy Secondary, Barasat" },
     { title: "2019–21", desc: "CBSE Class 10 at Aditya Academy Secondary, Dum Dum" }
   ],
@@ -28,7 +28,6 @@ export default function About() {
   return (
     <section id="about" className="py-20 text-white scroll-mt-24 pt-12">
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
-        {/* Left Side – Profile Image */}
         <div className="w-full h-full flex justify-center items-start z-50">
           <Image
             src="/assets/profile2.jpeg"
@@ -38,8 +37,6 @@ export default function About() {
             className="rounded-lg object-cover shadow-lg"
           />
         </div>
-
-        {/* Right Side – Content */}
         <div>
           <h2 className="text-3xl text-red-400 font-bold mb-4">About Me</h2>
           <p className="text-gray-300 mb-6">
@@ -47,8 +44,6 @@ export default function About() {
             Always ready to march ahead grabbing opportunities, learning from past mistakes and improving myself everyday.
             Highly adaptive and a friendly fellow.
           </p>
-
-          {/* Tab Headers */}
           <div className="flex gap-6 mb-4 text-red-400">
             {["skills", "education", "experience"].map(tab => (
               <button
@@ -62,8 +57,6 @@ export default function About() {
               </button>
             ))}
           </div>
-
-          {/* Animated Tab Content */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}

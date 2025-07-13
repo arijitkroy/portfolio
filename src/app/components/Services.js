@@ -23,7 +23,7 @@ export default function Services() {
         <h2 className="text-3xl font-bold mb-10 text-red-400">My Services</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {services.map((s, i) => (
-            <div key={i} className="bg-gray-900 p-6 rounded-lg text-center space-y-4 hover:scale-105 transition">
+            <div key={i} className="bg-gray-900 p-6 rounded-lg border-2 border-white text-center space-y-4 hover:scale-105 transition">
               <i className={`${s.icon} text-3xl text-accent`} />
               <h3 className="text-xl font-semibold">{s.title}</h3>
               <p className="text-gray-300">{s.desc}</p>
@@ -32,7 +32,7 @@ export default function Services() {
         </div>
       </div>
         <div className="text-center underline underline-offset-4 mt-10">
-            <a href="https://github.com/arijitkroy/" className="btn">See more</a>
+            <a href="https://github.com/arijitkroy/" className="btn">See more →</a>
         </div>
     </section>
   )

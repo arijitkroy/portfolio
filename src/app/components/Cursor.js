@@ -34,8 +34,8 @@ export default function Cursor() {
       const container = document.querySelector(".parallax-container")
       if (container) {
         const { innerWidth: w, innerHeight: h } = window
-        const xTilt = (x - w / 2) / w * 20
-        const yTilt = (y - h / 2) / h * 20
+        const xTilt = (x - w / 2) / w * 60
+        const yTilt = (y - h / 2) / h * 60
         container.style.transform = `rotateY(${xTilt}deg) rotateX(${-yTilt}deg)`
       }
     }
