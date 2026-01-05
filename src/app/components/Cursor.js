@@ -1,5 +1,7 @@
 "use client"
-import { useEffect, useRef, useState } from 'react'
+import Image from "next/image"
+import { useEffect, useRef, useState } from "react"
+import { CURSOR_PRESETS } from "../cursorPresets"
 
 const COLORS = ["#FACC15", "#38BDF8", "#F472B6", "#A78BFA", "#34D399"]
 
@@ -8,83 +10,76 @@ export default function Cursor() {
   const [sparkles, setSparkles] = useState([])
   const [visible, setVisible] = useState(true)
   const [isTouch, setIsTouch] = useState(false)
+  const [preset, setPreset] = useState("classic")
+
+  const current = CURSOR_PRESETS[preset]
 
   useEffect(() => {
-    const detectTouchDevice = () => {
-      setIsTouch(('ontouchstart' in window) || navigator.maxTouchPoints > 0)
+    const detectTouch = () => {
+      setIsTouch(("ontouchstart" in window) || navigator.maxTouchPoints > 0)
     }
 
-    detectTouchDevice()
-    window.addEventListener("resize", detectTouchDevice)
+    detectTouch()
+    window.addEventListener("resize", detectTouch)
 
-    const createSparkle = (x, y) => {
+    const move = (x, y) => {
       if (cursorRef.current && !isTouch) {
-        cursorRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`
+        cursorRef.current.style.transform =
+          `translate3d(${x - current.size / 2}px, ${y - current.size / 2}px, 0)`
       }
 
-      const newSparkle = {
-        id: Date.now(),
+      const sparkle = {
+        id: crypto.randomUUID(),
         x,
         y,
         color: COLORS[Math.floor(Math.random() * COLORS.length)]
       }
 
-      setSparkles(prev => [...prev.slice(-30), newSparkle])
-
-      const container = document.querySelector(".parallax-container")
-      if (container) {
-        const { innerWidth: w, innerHeight: h } = window
-        const xTilt = (x - w / 2) / w * 60
-        const yTilt = (y - h / 2) / h * 60
-        container.style.transform = `rotateY(${xTilt}deg) rotateX(${-yTilt}deg)`
-      }
+      setSparkles(p => [...p.slice(-30), sparkle])
     }
 
-    const handleMouseMove = (e) => createSparkle(e.clientX, e.clientY)
-    const handleTouchMove = (e) => {
-      const touch = e.touches[0]
-      if (touch) createSparkle(touch.clientX, touch.clientY)
-    }
+    const mouse = e => move(e.clientX, e.clientY)
+    const touch = e => e.touches[0] && move(e.touches[0].clientX, e.touches[0].clientY)
 
-    const showCursor = () => setVisible(true)
-    const hideCursor = () => setVisible(false)
-
-    if (!isTouch) {
-      window.addEventListener("mousemove", handleMouseMove)
-    } else {
-      window.addEventListener("touchmove", handleTouchMove)
-    }
-
-    window.addEventListener("focus", showCursor)
-    window.addEventListener("blur", hideCursor)
-    document.addEventListener("mouseleave", hideCursor)
-    document.addEventListener("mouseenter", showCursor)
+    if (!isTouch) window.addEventListener("mousemove", mouse)
+    else window.addEventListener("touchmove", touch)
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-      window.removeEventListener("touchmove", handleTouchMove)
-      window.removeEventListener("focus", showCursor)
-      window.removeEventListener("blur", hideCursor)
-      document.removeEventListener("mouseleave", hideCursor)
-      document.removeEventListener("mouseenter", showCursor)
-      window.removeEventListener("resize", detectTouchDevice)
+      window.removeEventListener("mousemove", mouse)
+      window.removeEventListener("touchmove", touch)
+      window.removeEventListener("resize", detectTouch)
     }
-  }, [isTouch])
+  }, [isTouch, current.size])
 
   return (
     <>
-      {/* White cursor dot — desktop only */}
+      {/* Cursor Image */}
       {!isTouch && (
         <div
           ref={cursorRef}
-          className={`fixed top-0 left-0 w-5 h-5 rounded-full z-[99999] pointer-events-none mix-blend-difference transition-opacity duration-200 ${
-            visible ? "bg-white border-2 border-red-800 opacity-100" : "opacity-0"
-          }`}
-        />
+          className={`fixed top-0 left-0 z-[99999]
+            pointer-events-none transition-opacity duration-200
+            ${visible ? "opacity-100" : "opacity-0"}`}
+          style={{ 
+            width: current.size, 
+            height: current.size, 
+            
+            filter: current.color
+              ? `drop-shadow(0 0 8px ${current.color})`
+              : "none",
+            }}
+        >
+          <Image
+            src={current.src}
+            alt={current.label}
+            fill
+            priority
+            draggable={false}
+          />
+        </div>
       )}
 
-
-      {/* Glitter effect — all devices */}
+      {/* Sparkles */}
       {sparkles.map(({ id, x, y, color }) => (
         <div
           key={id}
@@ -93,9 +88,29 @@ export default function Cursor() {
             top: y + (Math.random() - 0.5) * 30,
             backgroundColor: color
           }}
-          className="fixed w-2 h-2 rounded-full blur-sm z-[9998] opacity-80 pointer-events-none animate-glitter"
+          className="fixed w-2 h-2 rounded-full blur-sm
+            z-[9998] opacity-80 pointer-events-none animate-glitter"
         />
       ))}
+
+      {/* Cursor Selector Dropdown */}
+      {!isTouch && (
+        <div className="fixed bottom-6 right-6 z-[1000]">
+          <select
+            value={preset}
+            onChange={e => setPreset(e.target.value)}
+            className="bg-black/80 text-green-400 border border-green-500
+              rounded-md px-3 py-2 text-sm backdrop-blur-md
+              focus:outline-none focus:ring-2 focus:ring-green-400"
+          >
+            {Object.entries(CURSOR_PRESETS).map(([key, val]) => (
+              <option key={key} value={key}>
+                {val.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
     </>
   )
 }
