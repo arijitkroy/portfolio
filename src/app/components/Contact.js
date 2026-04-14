@@ -23,7 +23,7 @@ export default function Contact() {
           </p>
 
           <a
-            href="/assets/Latest_CV.pdf"
+            href="/assets/CV_Latest.pdf"
             download
             className="inline-block mt-4 bg-accent bg-red-100 text-black hover:bg-red-800 hover:text-red-100 px-4 py-2 rounded-lg font-semibold"
           >
